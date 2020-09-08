@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SafetyPage {
-
-    public final WebDriver driver;
+public class SafetyPage extends AbsPage {
 
     @FindBy(xpath = "(//a[contains(@data-nav-type, '9')]/div[contains(text(), 'Безопасность')])[3]")
     private WebElement safetyMenu;
@@ -25,8 +23,7 @@ public class SafetyPage {
     By safetyMenuTextSelector = By.xpath("//div[text() = 'Настройки и рекомендации, которые помогают защитить аккаунт.']");
 
     public SafetyPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void waitForVisisbility(By selector) {

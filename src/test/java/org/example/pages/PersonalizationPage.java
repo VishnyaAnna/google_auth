@@ -12,9 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PersonalizationPage {
+public class PersonalizationPage extends AbsPage {
 
-    public final WebDriver driver;
 
     @FindBy(xpath = "(//a[contains(@data-nav-type, '9')][./div[contains(text(), 'Данные и персонализация')]])[2]")
     private WebElement personalizationMenu;
@@ -25,8 +24,7 @@ public class PersonalizationPage {
     By personalizationTextSelector = By.xpath("//div[text() = 'Ваши данные и действия, а также настройки, которые помогают делать сервисы Google более полезными для вас.']");
 
     public PersonalizationPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void waitForVisisbility(By selector) {

@@ -5,14 +5,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PersonalInformationPage {
-
-    public final WebDriver driver;
+public class PersonalInformationPage extends AbsPage {
 
     @FindBy(xpath = "//a[contains(@data-nav-type, '9')]/div[contains(text(), 'Личная информация')]")
     private WebElement personalInformationMenu;
@@ -23,11 +20,10 @@ public class PersonalInformationPage {
     By profileTextSelector = By.xpath("//h2[text() = 'Профиль']");
 
     public PersonalInformationPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
-    public void waitForVisisbility(By selector) {
+    public void waitForVisibility(By selector) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(selector));
     }
@@ -44,7 +40,7 @@ public class PersonalInformationPage {
 
     public void profileTextisDisplayed() {
         waitForPageLoaded(driver.getCurrentUrl());
-        waitForVisisbility(profileTextSelector);
+        waitForVisibility(profileTextSelector);
     }
 
     private ExpectedCondition<Boolean> pageLoaded(String pagePartialUrl) {

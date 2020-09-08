@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SettingsPage {
-
-    public final WebDriver driver;
+public class SettingsPage extends AbsPage {
 
     @FindBy(xpath = "//c-wiz[@data-savescroll = \"0\" and not(@data-savedfocusid)] //a[@href=\"people-and-sharing\" and .//div[contains(text(), \"Настройки доступа\")] and .//img[@data-atf=\"true\"]]")
     private WebElement settingsMenu;
@@ -23,8 +21,7 @@ public class SettingsPage {
     By settingsMenuTextSelector = By.xpath("//div[text() = 'Люди, с которыми вы общаетесь, и настройки доступа к вашей информации в сервисах Google.']");
 
     public SettingsPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void waitForVisisbility(By selector) {

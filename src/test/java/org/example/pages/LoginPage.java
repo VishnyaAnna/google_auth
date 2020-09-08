@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-    public final WebDriver driver;
+public class LoginPage extends AbsPage {
     private static final String login = ""; //put your gmail login
     private static final String password = ""; // put gmail password
 
@@ -24,8 +23,9 @@ public class LoginPage {
     private WebElement buttonEntrance;
 
     public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver; }
+        super(driver);
+    }
+
 
     public void onPage() {
         driver.get("https://accounts.google.com/signin/v2");
